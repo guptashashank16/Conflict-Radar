@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: aicte_radar_postgres
+    environment:
+      POSTGRES_DB: aicte_radar
+      POSTGRES_USER: radar_admin
+      POSTGRES_PASSWORD: secure_dev_password_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U radar_admin -d aicte_radar"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: aicte_radar_backend
+    environment:
+      DATABASE_URL: postgresql://radar_admin:secure_dev_password_123@db:5432/aicte_radar
+      SECRET_KEY: sih26264-institution-conflict-radar-master-secret-key-development-mode
+      ENVIRONMENT: production
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aicte_radar_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

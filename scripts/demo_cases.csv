@@ -1,0 +1,4 @@
+source_system,source_case_id,bureau,category,subject,description,aicte_permanent_id,institution_name,region,priority,target_days
+CSV_BATCH_01,CSV-2026-9001,RB,FACULTY_NORMS,"[SYNTHETIC] Biometric Attendance Cadre Shortfall","Faculty biometric compliance log shows 38% deficiency in prescribed cadres.","1-10029341","Apex Institute of Technology",Western,HIGH,7
+CSV_BATCH_01,CSV-2026-9002,PGRC,CAPITATION_FEE,"[SYNTHETIC] Unofficial Building Fund Levy Complaint","Parents collective submitted sworn affidavits regarding Rs 25,000 cash demand during direct admissions.","1-10029342","Bharatiya College of Engineering & Research",Northern,CRITICAL,5
+CSV_BATCH_01,CSV-2026-9003,APPROVAL,INFRASTRUCTURE_DEFICIT,"[SYNTHETIC] Sub-standard Fire Safety Certificate","Local municipal inspection issued provisional notice for uninspected emergency stairwells in new academic block.","1-10029343","Chaitanya Institute of Pharmaceutical Sciences",Southern,MEDIUM,10
